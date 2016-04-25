@@ -1,0 +1,12 @@
+{
+  "name": "@joezone/proxy-expect",
+  "version": "0.9.1",
+  "description": "Surogate for the real 'expect' function for cases where the class is serialized",
+  "author":"Joe Honton",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:joehonton/proxy-expect.git"
+  },
+  "license": "CC-BY-SA 4.0",
+  "main": "proxy-expect.js"
+}
