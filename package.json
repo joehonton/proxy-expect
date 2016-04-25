@@ -1,7 +1,7 @@
 {
   "name": "@joezone/proxy-expect",
   "version": "0.9.1",
-  "description": "Surogate for the real 'expect' function for cases where the class is serialized",
+  "description": "Surrogate for the real 'expect' function for cases where the class is serialized",
   "author":"Joe Honton",
   "repository": {
     "type": "git",

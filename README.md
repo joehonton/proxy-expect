@@ -1,5 +1,5 @@
-# Expect
-Contract by design explicit type checking.
+# ProxyExpect
+This is a surrogate for the real 'expect' function for cases where a class object is serialized.
 
 ## Scoped package
 This is a scoped package. Be sure to use the @joezone prefix for both your package dependency and any require statements.
