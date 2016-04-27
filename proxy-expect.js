@@ -21,6 +21,13 @@ class ProxyExpect {
 	constructor() {
 	}
 	
+	write(msg) {
+		if (process != undefined && process.stderr != undefined && process.stderr.write != undefined)
+			process.stderr.write(msg);
+		else if (console != undefined && console.log != undefined)
+			console.log(msg);
+	}
+
 	//^ Check to make sure the given argument is of the expected type, and write an entry when it's not
 	//> obj is an anonymous Object to check, with a 'jsClassName' property
 	//> expectedType is a string containing the expected class name
@@ -31,21 +38,21 @@ class ProxyExpect {
 		message = message || '';
 	
 		if (obj === undefined)
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got 'undefined' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got 'undefined' ${message}\n`);
 		else if (obj === null)
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got 'null' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got 'null' ${message}\n`);
 		else if (obj.constructor.name != 'Object')
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got '${obj.constructor.name}' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'Object', but got '${obj.constructor.name}' ${message}\n`);
 		else if (obj.jsClassName === undefined)
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got 'undefined' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got 'undefined' ${message}\n`);
 		else if (obj.jsClassName === null)
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got 'null' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got 'null' ${message}\n`);
 		else if (obj.jsClassName.constructor.name != 'String')
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got '${obj.jsClassname.constructor.name}' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'jsClassName' to be a String, but got '${obj.jsClassname.constructor.name}' ${message}\n`);
 		else if (expectedType.constructor.name != 'String')
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'expectedType' to be a String, but got '${expectedType.constructor.name}' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected 'expectedType' to be a String, but got '${expectedType.constructor.name}' ${message}\n`);
 		else if (obj.jsClassName != expectedType)
-			process.stderr.write(`[*EXPECT*]${this.getFunctionName(4)} Expected '${expectedType}', but got '${obj.jsClassName}' ${message}\n`);
+			this.write(`[*EXPECT*]${this.getFunctionName(4)} Expected '${expectedType}', but got '${obj.jsClassName}' ${message}\n`);
 		else
 			return true;
 		

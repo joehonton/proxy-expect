@@ -5,7 +5,7 @@ This is a surrogate for the real 'expect' function for cases where a class objec
 This is a scoped package. Be sure to use the @joezone prefix for both your package dependency and any require statements.
 
 	"dependencies": {
-	  "@joezone/proxy-expect": "^0.9.1"
+	  "@joezone/proxy-expect": "^0.9.3"
 	}
 	 
 	require('@joezone/proxy-expect') 
